@@ -3,7 +3,7 @@ requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "intsys_car_v1_zumlernen"
+name = "intsys_car_v1"
 version = "0.0.1"
 authors = [
   { name="Dr. Dennis Burgermeister", email="dennis@zumlernen.de" },
