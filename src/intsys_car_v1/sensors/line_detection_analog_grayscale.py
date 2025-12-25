@@ -1,7 +1,7 @@
 from time import sleep
 from smbus import SMBus
 
-class AnalogGrayscale():
+class AnalogGrayscale:
     def __init__(self, threshold=300, channel_left=0x17, channel_center = 0x16, channel_right=0x15):
         self.bus = SMBus(1)
         self.threshold = threshold

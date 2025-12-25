@@ -15,7 +15,7 @@ def get_speed_of_sound(temperature_celsius):
     return 331.5 + 0.6 * temperature_celsius
 
 
-class HC_SR04():
+class HC_SR04:
     def __init__(self, trigger_pin = 27, echo_pin = 22, factory = LGPIOFactory(), speed_of_sound = get_speed_of_sound(20)):
         self.trigger = gpiozero.OutputDevice(trigger_pin, pin_factory=factory)
         self.echo = gpiozero.InputDevice(echo_pin, pin_factory=factory)
