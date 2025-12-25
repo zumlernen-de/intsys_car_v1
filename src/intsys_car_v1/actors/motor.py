@@ -33,6 +33,7 @@ class Motor:
         self.dir = gpiozero.OutputDevice(dir_pin, pin_factory=factory)
         self.freq = freq
         self._is_reversed = is_reversed
+        self._min_speed_to_move = min_speed_to_move
         self.pwm = PWM(pwm_pin)
         self.pwm.period(4095)
         self.pwm.prescaler(10)
