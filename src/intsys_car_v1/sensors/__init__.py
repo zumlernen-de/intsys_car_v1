@@ -1,2 +1,2 @@
 from .line_detection_analog_grayscale import AnalogGrayscale
-from .ultrasonic_hc_sr04 import HC_SR04
+from .ultrasonic_hc_sr04 import HC_SR04, get_speed_of_sound

@@ -66,7 +66,7 @@ class Motor:
         value = max(min(100, value), -100)
 
         self._speed = value
-        scaled_speed = self._min_speed_to_move + (value / 100) * (100 - self._min_speed_to_move)
+        scaled_speed = self._min_speed_to_move + (value / 100) * (100 - self._min_speed_to_move) if value != 0 else 0
         self.pwm.pulse_width_percent(abs(scaled_speed))
         self.is_reversed = value < 0
 

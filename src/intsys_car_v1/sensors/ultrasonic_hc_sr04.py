@@ -78,7 +78,7 @@ class HC_SR04:
         self.emit_sound(self.trigger)
         signal_start = self.get_time_of_emit(self.echo)
         if not signal_start:
-            return dict()
+            return None
         signal_end = self.get_time_echo_ends(self.echo)
         time_passed_sec = signal_end - signal_start
         time_per_distance_sec = time_passed_sec / 2
@@ -86,6 +86,8 @@ class HC_SR04:
 
     def get_data(self):
         time_per_distance_sec = self.get_signal_time()
+        if not time_per_distance_sec:
+            return None
         distance_m = time_per_distance_sec * self.speed_of_sound  # Durch 2 Teilen weil die Zeit hin + zurück gemessen wurde.
         distance_cm = distance_m * 100
         return dict(distance_m=distance_m,
@@ -95,15 +97,15 @@ class HC_SR04:
 
     def get_distance_cm(self):
         time_per_distance_sec = self.get_signal_time()
+        if not time_per_distance_sec:
+            return None
         distance_m = time_per_distance_sec * self.speed_of_sound  # Durch 2 Teilen weil die Zeit hin + zurück gemessen wurde.
         return distance_m * 100
 
 
 def main():
     factory = LGPIOFactory()
-    ultrasonic = HC_SR04(27, 22, get_speed_of_sound(20))
-    GPIO_TRIGGER = 27
-    GPIO_ECHO = 22
+    ultrasonic = HC_SR04(27, 22, factory, get_speed_of_sound(20))
 
     loop(ultrasonic)
 
@@ -111,8 +113,9 @@ def loop(ultrasonic):
     while True:
         print("---- Neue Messung")
         result = ultrasonic.get_ultrasonic_data()
-        if result["distance_cm"] == 0:
+        if not result or result["distance_cm"] == 0:
             print("Fehler in der Messung")
+            continue
         # print(f"Dauer 1-Strecke in Mikrosekunden: {dauer:.15f}µs")
         print(f"Dauer 1-Strecke in Sekunden: {result['time_per_distance_sec']}s")
         print(f"Schallgeschwindigkeit: {result['speed_of_sound']}s")
