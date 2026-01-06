@@ -84,6 +84,9 @@ class Servo(PWM):
         self.prescaler(prescaler)
 
     def angle(self, angle):
+        self.setAngle(angle)
+
+    def setAngle(self, angle):
         """
         Set the angle of the servo motor
 
