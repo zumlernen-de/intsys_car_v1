@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "intsys_car_v1"
-version = "0.0.2"
+version = "0.0.4"
 authors = [
   { name="Dr. Dennis Burgermeister", email="dennis@zumlernen.de" },
 ]
@@ -14,6 +14,11 @@ requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+]
+dependencies = [
+    "smbus2",
+    "numpy",
+    "opencv-python",
 ]
 license = "GPL-3.0"
 license-files = ["LICEN[CS]E*"]

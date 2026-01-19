@@ -3,7 +3,7 @@ import time
 import gpiozero
 from gpiozero.pins.lgpio import LGPIOFactory
 
-from robot_hat.pwm import PWM
+from ..robot_hat import PWM
 
 # Motor Left PWM P13
 # Motor Left Dir Pin: D4 - 23
@@ -25,9 +25,9 @@ class Motor:
         Initialize a motor
 
         :param pwm: Motor speed control pwm pin
-        :type pwm: robot_hat.pwm.PWM
+        :type pwm: PWM
         :param dir: Motor direction control pin
-        :type dir: robot_hat.pin.Pin
+        :type dir: intsys_car_v1.robot_hat.pin.Pin
         """
 
         self.dir = gpiozero.OutputDevice(dir_pin, pin_factory=factory)

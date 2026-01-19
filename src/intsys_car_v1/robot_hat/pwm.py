@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import math
 
-from robot_hat import I2C
+from .i2c import I2C
 
 timer = [{"arr": 1} for _ in range(7)]
 

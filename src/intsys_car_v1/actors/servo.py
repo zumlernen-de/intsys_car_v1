@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from robot_hat import PWM
+from ..robot_hat import PWM
 
 def mapping(x, in_min, in_max, out_min, out_max):
     """

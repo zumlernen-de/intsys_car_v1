@@ -3,7 +3,7 @@
 from smbus2 import SMBus
 import multiprocessing
 
-from robot_hat.basic import _Basic_class
+from .basic import _Basic_class
 
 def run_command(cmd):
     """
